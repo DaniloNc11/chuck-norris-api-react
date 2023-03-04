@@ -1,0 +1,12 @@
+.Button2{
+    box-sizing: border-box;
+
+position: absolute;
+width: 187px;
+height: 45px;
+left: 87px;
+top: 510px;
+
+background: #81717A;
+border: 1px solid #000000;
+}

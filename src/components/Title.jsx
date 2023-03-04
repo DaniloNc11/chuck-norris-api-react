@@ -6,7 +6,7 @@ function Title() {
 
   return (
     <div className="Title">
-      <p>Chuck norris api</p>
+      <h1 class="Title">Chuck norris api</h1>
     </div>
   )
 }
