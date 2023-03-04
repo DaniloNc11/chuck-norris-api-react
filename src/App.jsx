@@ -1,13 +1,18 @@
 import { useState } from 'react'
 import './styles/App.css'
-import title from './components/Title'
+import Title from './components/Title.jsx'
+import Button from './components/Button'
+import Button2 from './components/Button2'
+import Button3 from './components/Button3'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <title>THIAW</title>
+      <Title></Title>
+      <Button></Button>
+      <Button2></Button2>
+      <Button3></Button3>
     </div>
   )
 }
