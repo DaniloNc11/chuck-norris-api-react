@@ -1,13 +1,29 @@
+
 import { useState } from 'react'
-
 import '../styles/Button.css'
+import  './Title'
 
-function Button() {
+function Button({text,variant,callback}) {
+  const [count, setCount] = useState(0)
+  let clickHandler = function(e){
+    console.log(e)
+    console.log(typeof undefined)
+  }
+
+  let classRenderer = function (){
+    let classes = [
+      'Button', variant
+    ]
+    return classes.join(" ")
+  }
 
   return (
-    <div className="Button">
-      <button class="Button">Cliccami</button>
-    </div>
+    <div onClick={clickHandler} className={classRenderer()}>
+
+     {text}
+     </div>
+  
+  
   )
 }
 

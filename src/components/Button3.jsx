@@ -6,7 +6,7 @@ function Button3() {
 
   return (
     <div className="Button3">
-      <button class="Button3"></button>
+      <button></button>
     </div>
   )
 }
