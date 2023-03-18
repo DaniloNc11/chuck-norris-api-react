@@ -3,30 +3,52 @@ import './styles/App.css'
 import Title from './components/Title.jsx'
 import Button from './components/Button'
 import Button2 from './components/Button2'
-import Button3 from './components/Button3'
+import Select from './components/Select'
+import Chuck from './components/Chuck'
 import Subtitle from './components/Subtitle'
 
 
-function App() {
-  const [joke, setJoke] = useState(0)
+function App() 
+{
+  const [Jokes, setJokes] = useState("");
+  const [Categorie, setCategorie] = useState([]);
+  let url = "https://api.chucknorris.io/jokes/categories";
+  fetch(url).then((resp)=>{
+    return resp.json();
+  }).then(data=>{
+    data.unshift("random");
+    setCategorie(data);
+  }).catch((e)=>{
+    console.log(e)
+  })
 
-  let loadJokeCallback = function (){
-    console.log ("ciao")
-    setJoke("testo joke")
+  let loadJokeCallback = function ()
+  {
+    let Categoria = document.getElementById("Select").value
+    let url = "https://api.chucknorris.io/jokes/" + (Categoria==="random"?"random":("random?category=") + Categoria);
+    fetch(url).then((resp)=>{
+      return resp.json();
+    }).then(data=>{
+      setJokes(data.value);
+    }).catch((e)=>{
+      console.log(e)
+    })
   }
-  
-  let copyTextCallback = function (){
-    console.log ("bye")
+
+  let copyTextCallback = function ()
+  {
+    let Joke = document.getElementById("Joke");
+    navigator.clipboard.writeText(Joke.innerText);
   }
 
   return (
     <div className="App">
       <Title></Title>
       <Subtitle></Subtitle>
-      <Button2></Button2>
-      <Button3></Button3>
       <Button text='Carica il joke' callback={loadJokeCallback}/>
-      <Button text='Copia' variant={ joke == "" ? "disabled" : undefined}callback={copyTextCallback}/>
+      <Button2 id="Clipboard" text='Copia' callback={copyTextCallback}/>
+      <Select id='Select' values={Categorie}></Select>
+      <Chuck id="Joke">{Jokes}</Chuck>
     </div>
   )
 }

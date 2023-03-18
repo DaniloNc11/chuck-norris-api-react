@@ -1,13 +1,13 @@
 
 import { useState } from 'react'
 import '../styles/Button.css'
-import  './Title'
 
 function Button({text,variant,callback}) {
   const [count, setCount] = useState(0)
-  let clickHandler = function(e){
-    console.log(e)
-    console.log(typeof undefined)
+  let clickHandler = function(){
+    if(callback!=undefined && variant!="disabled"){
+      callback();
+    }
   }
 
   let classRenderer = function (){
